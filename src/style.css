@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Circular';
+    src: url('./fonts/CircularStd.woff');
+}
+
+
 #main {
     display: flex;
     flex-direction: row;
