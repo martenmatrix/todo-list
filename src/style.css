@@ -1,5 +1,25 @@
 #main {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.break-line {
+    background-color: grey;
+    width: 0.2rem;
+    border-radius: 100px;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%
+}
+
+.red {
+    background: red;
+}
+
+.green {
+    background: red;
 }
