@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo-List</title>
+    <script src="main.js"></script>
+</head>
+<body>
+
+<div class="modal-wrapper">
+    <div id="undo-todo-modal">
+        <p><strong>Deleted</strong> task "<span id="deleted-todo">Bring out the trash</span>".</p>
+    </div>
+</div>
+
+<div id="main">
+    <section id="lists">
+        <p class="header">Lists</p>
+
+        <div id="lists-entries">
+            <div class="list-entry" data-id="123213454">
+                <button>+</button>
+                <p class="title">MyList</p>
+                <p class="description">This list is the default list.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="break-line"></div>
+
+    <section id="todos">
+        <p class="header">Todo's</p>
+
+        <div id="todos-entries">
+            <div class="todo-entry" data-id="124342">
+                <div class="center-vertical">
+                    <button class="circle white"></button>
+                </div>
+                <div id="text-items">
+                    <p class="title">Bring out the trash</p>
+                    <p class="description">Bring the trash to the front of the door</p>
+                </div>
+                <p class="date">20. Jan 2021</p>
+                <p class="priority">1</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="break-line"></div>
+
+    <section id="statistics">
+        <p class="header">Statistics</p>
+
+        <div class="center-horizontal">
+        <div id="statistics-box">
+        <ul id="statistics-list">
+            <li><span class="circle red"></span>    <p id="pending-tasks">1</p>  </li>
+            <li><span class="circle green"></span>    <p id="completed-tasks">0</p>  </li>
+        </ul>
+        </div>
+        </p>
+    </section>
+</div>
+</body>
+</html>
