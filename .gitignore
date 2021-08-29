@@ -104,7 +104,9 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+dist/*
+# Do not ignore index.html
+!index.html
 
 # Gatsby files
 .cache/
@@ -152,6 +154,3 @@ dist
 # Ignore all local history of files
 .history
 .ionide
-
-# Do not ignore index.html
-!index.html
