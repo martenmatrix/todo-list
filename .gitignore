@@ -105,8 +105,6 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist/*
-# Do not ignore index.html
-!index.html
 
 # Gatsby files
 .cache/
