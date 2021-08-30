@@ -1,2 +1,2 @@
-//load css for webpack
 import './style.css';
+import { todosList } from './data';
