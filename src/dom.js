@@ -29,12 +29,28 @@ const domManipulation = (function() {
         centerVerticalDiv.appendChild(deleteButton);
 
         const textItems = document.createElement('div');
-        textItems.id = 'text-items';
-        todosEntries.appendChild(textItems);
+        textItems.classList.add('text-items');
+        divWrapper.appendChild(textItems);
 
         const titleParagraph = document.createElement('p');
         titleParagraph.classList.add('title');
         titleParagraph.textContent = title;
+        textItems.appendChild(titleParagraph);
+
+        const descriptionParagraph = document.createElement('p');
+        descriptionParagraph.classList.add('description');
+        descriptionParagraph.textContent = description;
+        textItems.appendChild(descriptionParagraph);
+
+        const dateParagraph = document.createElement('p');
+        dateParagraph.classList.add('date');
+        dateParagraph.textContent = date;
+        divWrapper.appendChild(dateParagraph);
+
+        const priorityParagraph = document.createElement('p');
+        priorityParagraph.classList.add('priority');
+        priorityParagraph.textContent = priority;
+        divWrapper.appendChild(priorityParagraph);
     };
 
     function removeTodoObject() {
