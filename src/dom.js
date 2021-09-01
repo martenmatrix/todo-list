@@ -100,9 +100,20 @@ const domManipulation = (function() {
         listToRemove.remove();
     };
 
-    function removeAllList() {
+    function removeAllLists() {
         const listDivs = document.querySelectorAll('.list-entry');
         _removeAllDivs(listDivs);
     };
 
+    function displayLists(listsArray) {
+        removeAllLists();
+
+        listsArray.forEach(listObject => {
+            displayListObject(listObject);
+        });
+    };
+
+    return {displayLists, removeAllTodos, displayAllTodos};
 })();
+
+export default domManipulation;
