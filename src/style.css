@@ -226,6 +226,7 @@ body {
     height: 100%;
     background:rgba(0, 0, 0, 0);
 
+    display: none;
     position: fixed;
     z-index: 2;
 }

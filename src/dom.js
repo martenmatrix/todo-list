@@ -116,4 +116,18 @@ const domManipulation = (function() {
     return {displayLists, removeAllTodos, displayAllTodos};
 })();
 
-export default domManipulation;
+const undoModal = (function() {
+    const modal = document.querySelector('.modal-wrapper');
+
+    function show() {
+        modal.style.display = 'block';
+    };
+
+    function hide() {
+        modal.style.display = 'none';
+    };
+
+    return { show, hide }
+})();
+
+export { domManipulation, undoModal};
