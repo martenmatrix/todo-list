@@ -1,7 +1,5 @@
 import { format } from 'date-fns';
 
-const dates
-
 const domManipulation = (function() {
     const listentries = document.querySelector('#list-entries');
     const todosEntries = document.querySelector('#todo-entries');
@@ -73,7 +71,7 @@ const domManipulation = (function() {
     };
 
     //List sections
-    function displayList(listObject) {
+    function displayListObject(listObject) {
         const title = listObject.title;
         const description = listObject.title;
 
@@ -106,15 +104,5 @@ const domManipulation = (function() {
         const listDivs = document.querySelectorAll('.list-entry');
         _removeAllDivs(listDivs);
     };
-
-    //can take an list object as argument and displays everything from it, even the todo entries
-    function displayListObject(listObject) {
-        const todos = listObject.items;
-
-        removeAllTodos();
-        displayListObject(listObject);
-        displayAllTodos(todos);
-    };
-
 
 })();
