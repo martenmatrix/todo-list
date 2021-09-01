@@ -53,22 +53,44 @@ const domManipulation = (function() {
         divWrapper.appendChild(priorityParagraph);
     };
 
-    function removeTodoObject() {
-
+    function removeTodoObject(title) {
+        const objectToRemove = document.querySelector(```[data-title="${title}"]```);
+        objectToRemove.remove();
     };
 
     function removeAllTodos() {
-
+        const todoDivs = document.querySelectorAll('.todo-entry');
+        todoDivs.forEach(() => {this.remove()});
     };
 
 
     //List sections
-    function displayList() {
+    function displayList(listObject) {
+        const title = listObject.title;
+        const description = listObject.title;
 
+        const divWrapper = document.createElement('div');
+        divWrapper.classList.add('list-entry');
+        divWrapper.dataset.title = title;
+        listentries.appendChild(divWrapper);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = '+';
+        divWrapper.appendChild(deleteButton);
+
+        const titleParagraph = document.createElement('p');
+        titleParagraph.classList.add('title');
+        titleParagraph.textContent = title;
+        divWrapper.appendChild(titleParagraph);
+        
+        const descriptionParagraph = document.createElement('p');
+        descriptionParagraph.classList.add('description');
+        descriptionParagraph.textContent = description;
+        divWrapper.appendChild(descriptionParagraph);
     };
 
-    function removeList() {
-
+    function removeList(title) {
+        
     };
 
     function removeAllList() {
