@@ -6,6 +6,11 @@ const domManipulation = (function() {
     const listentries = document.querySelector('#list-entries');
     const todosEntries = document.querySelector('#todo-entries');
 
+    //misc
+    function _removeAllDivs(divs) {
+        divs.forEach((div) => {div.remove();})
+    };
+
     //Todo section
     function displayTodoObject(object) {
         const title = object.title;
@@ -44,7 +49,7 @@ const domManipulation = (function() {
 
         const dateParagraph = document.createElement('p');
         dateParagraph.classList.add('date');
-        dateParagraph.textContent = date;
+        dateParagraph.textContent = displayDate;
         divWrapper.appendChild(dateParagraph);
 
         const priorityParagraph = document.createElement('p');
@@ -53,6 +58,10 @@ const domManipulation = (function() {
         divWrapper.appendChild(priorityParagraph);
     };
 
+    function displayAllTodos(itemsArray) {
+        itemsArray.forEach(todo => {displayTodoObject(todo);});
+    }
+
     function removeTodoObject(title) {
         const objectToRemove = document.querySelector(```[data-title="${title}"]```);
         objectToRemove.remove();
@@ -60,9 +69,8 @@ const domManipulation = (function() {
 
     function removeAllTodos() {
         const todoDivs = document.querySelectorAll('.todo-entry');
-        todoDivs.forEach(() => {this.remove()});
+        _removeAllDivs(todoDivs);
     };
-
 
     //List sections
     function displayList(listObject) {
@@ -90,16 +98,22 @@ const domManipulation = (function() {
     };
 
     function removeList(title) {
-        
+        const listToRemove = document.querySelector(```[data-title="${title}"]```);
+        listToRemove.remove();
     };
 
     function removeAllList() {
-
+        const listDivs = document.querySelectorAll('.list-entry');
+        _removeAllDivs(listDivs);
     };
 
     //can take an list object as argument and displays everything from it, even the todo entries
-    function displayListObject() {
+    function displayListObject(listObject) {
+        const todos = listObject.items;
 
+        removeAllTodos();
+        displayListObject(listObject);
+        displayAllTodos(todos);
     };
 
 
