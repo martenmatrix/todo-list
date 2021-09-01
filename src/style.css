@@ -257,3 +257,14 @@ body {
     width: 1em;
     height: 1em;
 }
+
+.add {
+    cursor: pointer;
+    border: none;
+
+    line-height: 0;
+
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1.5em;
+    margin-left: 0.2em;
+}
