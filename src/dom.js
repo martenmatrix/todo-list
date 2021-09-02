@@ -117,7 +117,7 @@ const domManipulation = (function() {
 })();
 
 const undoModal = (function() {
-    const modal = document.querySelector('.modal-wrapper');
+    const modal = document.querySelector('#modal-undo');
 
     function show() {
         modal.style.display = 'block';

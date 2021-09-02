@@ -21,6 +21,7 @@ const lists = (function() {
     };
 
     function deleteList(title) {
+        
         const index = _getIndexOfList(title);
 
         if (index === -1) console.error('List does not exist.');
