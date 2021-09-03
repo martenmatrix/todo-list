@@ -130,4 +130,24 @@ const undoModal = (function() {
     return { show, hide }
 })();
 
-export { domManipulation, undoModal};
+const todoInput = (function() {
+    const todoInput = document.getElementById('modal-add-todo');
+
+    function toggle() {
+        todoInput.classList.toggle('show');
+    };
+
+    return {toggle};
+})();
+
+const listInput = (function() {
+    const todoInput = document.querySelector('modal-add-list');
+
+    function toggle() {
+        todoInput.classList.toggle('show');
+    };
+
+    return {toggle};
+})();
+
+export { domManipulation, undoModal, todoInput, listInput };
