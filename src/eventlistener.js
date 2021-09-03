@@ -10,14 +10,22 @@ if user undos remove fromm array add back to list and remove the displayed undo
 
 
 */
-const listenFor = (function() {
-    function undoButton() {
-        const undoButtonImg = document.querySelector('#undo-todo-modal img');
 
-        undoButtonImg.addEventListener('click', () => {
             //undo last action considered
             //implement that in lists module so it saves a copy, if it changes and then an undo function is avaible to change everything back to before state
-        });
+
+const listenFor = (function() {
+    function undoButton(functionToExecute) {
+        const undoButtonImg = document.querySelector('#undo-todo-modal img');
+        undoButtonImg.addEventListener('click', functionToExecute);
+    };
+
+    function addListButton(functionToExecute) {
+
+    };
+
+    function addTodoButton(functionToExecute) {
+
     };
 })();
 

@@ -45,7 +45,7 @@ const lists = (function() {
 
     function setTodoArray(title, newArray) {
         const index = _getIndexOfList(title);
-        lists[index].title = newArray;
+        lists[index].items = newArray;
     };
 
     return {createList, deleteList, getListObject, setDescription, getTodoArray, setTodoArray}
@@ -60,25 +60,26 @@ const todos = (function() {
         this.priority = undefined;
     };
 
-    function _findIndex(list, title) {
-        const isTitle = (entry.title) === title;
-        const index = lists._findIndex(isTitle);
+    function _findIndex(itemArray, titleOfTodo) {
+        const isTitle = (entry) => (entry.title) === titleOfTodo;
+        const index = itemArray.findIndex(isTitle);
         return index;
     };
 
-    function addTodo(list, title) {
+    function addTodo(listTitle, title) {
         //todo check if already exists
-        const array = lists.getTodoArray(list);
+        const array = lists.getTodoArray(listTitle);
         const newTodo = new Todo();
         newTodo.title = title;
-        lists.setTodoArray(newTodo);
+        array.push(newTodo);
+        lists.setTodoArray(listTitle, array);
     };
 
     function removeTodo(list, title) {
         const array = lists.getTodoArray(list);
         const index = _findIndex(array, title);
         array.splice(index, 1);
-        setTodoArray(title, array);
+        lists.setTodoArray(list, array);
     };
 
     function setParameters(list, title, description, date, priority) {
@@ -87,7 +88,7 @@ const todos = (function() {
         array[index].description = description;
         array[index].date = date;
         array[index].priority = priority;
-        lists.setTodoArray(title, array);
+        lists.setTodoArray(list, array);
     };
 
     function getTodoObject() {
