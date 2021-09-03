@@ -15,23 +15,23 @@
     </div>
 </div>
 
-<div class="modal-wrapper-input" id="modal-add-todo">
-
+<div class="modal-wrapper-input show" id="modal-add-todo">
     <div class="modal-input">
     <p class="modal-title"></p>
         <form class="modal">
             <label for="ftitletodo">Title:</label>
-            <input type="text" class="ftitle" id="ftitletodo">
+            <input type="text" class="ftitle" id="ftitletodo" required>
             <label for="fdescriptiontodo">Description:</label>
-            <input type="text" class="fdescription" id="fdescriptiontodo">
+            <input type="text" class="fdescription" id="fdescriptiontodo" required>
             <label for="fdatetodo">Date:</label>
-            <input type="date" class="fdate" id="fdatetodo">
+            <input type="date" class="fdate" id="fdatetodo" required>
             <label for="fprioritytodo">Priority:</label>
-            <select class="fpriority" id="fprioritytodo">
+            <select class="fpriority" id="fprioritytodo" required>
                 <option value="vhigh">Very High</option>
                 <option value="high">High</option>
                 <option value="low">Low</option>
             </select>
+            <input type="submit" value="Add Todo">
         </form>
     </div>
 </div>
@@ -43,9 +43,10 @@
         <p class="modal-title"></p>
         <form class="modal">
             <label for="ftitlelist">Title:</label>
-            <input type="text" class="ftitle" id="ftitlelist">
+            <input type="text" class="ftitle" id="ftitlelist" required>
             <label for="fdescriptionlist">Description:</label>
-            <input type="text" class="fdescription" id="fdescriptionlist">
+            <input type="text" class="fdescription" id="fdescriptionlist" required>
+            <input type="submit" value="Add Todo" required>
         </form>
     </div>
 </div>

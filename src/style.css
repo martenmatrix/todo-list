@@ -271,12 +271,6 @@ body {
     margin-left: 0.2em;
 }
 
-
-.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
 .modal-input {
     position: fixed;
 }
@@ -293,10 +287,18 @@ body {
 
     display: flex;
     position: absolute;
-    pointer-events: none;
     justify-content: center;
     align-items: center;
+
+    pointer-events: none;
+    opacity: 0;
 }
 
 
 /*List input modal*/
+
+
+.show {
+    opacity: 1;
+    pointer-events: auto;
+}
