@@ -22,11 +22,11 @@ const listenFor = (function() {
 
     function addListButton(functionToExecute) {
         const addButton = document.querySelector('#lists .add');
-        addButton.addEventListener('click', () => functionToExecute);
+        addButton.addEventListener('click', functionToExecute);
     };
 
     function addTodoButton(functionToExecute) {
-        const addButton = document.querySelector('#lists .add');
+        const addButton = document.querySelector('#todos .add');
         addButton.addEventListener('click', functionToExecute);
     };
 

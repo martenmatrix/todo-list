@@ -141,7 +141,7 @@ const todoInput = (function() {
 })();
 
 const listInput = (function() {
-    const todoInput = document.querySelector('modal-add-list');
+    const todoInput = document.getElementById('modal-add-list');
 
     function toggle() {
         todoInput.classList.toggle('show');
