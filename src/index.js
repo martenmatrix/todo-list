@@ -1,12 +1,11 @@
 import './style.css';
 import { lists, todos } from './data';
+import listenFor from './eventlistener'
+import { domManipulation, undoModal, todoInput, listInput } from './dom';
 
-lists.createList('list1');
+const main = (function () {
+    //define event listeners
+    listenFor.addListButton(listInput.toggle);
 
-todos.addTodo('list1', 'need to do this');
-todos.addTodo('list1', 'second thing to do');
-
-todos.removeTodo('list1', 'need to do this');
-todos.removeTodo('list1', 'second thing to do');
-const currentList = lists.getListObject('list1');
-console.log(currentList);
+    //try out what a created dom returns if its a object, try to add a event listener with it
+})();

@@ -21,12 +21,16 @@ const listenFor = (function() {
     };
 
     function addListButton(functionToExecute) {
-
+        const addButton = document.querySelector('#lists .add');
+        addButton.addEventListener('click', () => functionToExecute);
     };
 
     function addTodoButton(functionToExecute) {
-
+        const addButton = document.querySelector('#lists .add');
+        addButton.addEventListener('click', functionToExecute);
     };
+
+    return {undoButton, addListButton, addTodoButton};
 })();
 
 export default listenFor;
