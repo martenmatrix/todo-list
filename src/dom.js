@@ -137,7 +137,16 @@ const todoInput = (function() {
         todoInput.classList.toggle('show');
     };
 
-    return {toggle};
+    function getData() {
+        const title = document.getElementById('ftitletodo').value;
+        const description = document.getElementById('fdescriptiontodo').value;
+        const date = document.getElementById('fdatetodo').value;
+        const priority = document.getElementById('fprioritytodo').value;
+
+        return {type: 'todo', title, description, date, priority}
+    };
+
+    return {toggle, getData};
 })();
 
 const listInput = (function() {
@@ -147,7 +156,14 @@ const listInput = (function() {
         todoInput.classList.toggle('show');
     };
 
-    return {toggle};
+    function getData() {
+        const title = document.getElementById('ftitlelist').value;
+        const description = document.getElementById('fdescriptionlist').value;
+        
+        return {type: 'list', title, description};
+    };
+
+    return {toggle, getData};
 })();
 
 export { domManipulation, undoModal, todoInput, listInput };
