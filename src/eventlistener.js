@@ -29,8 +29,25 @@ const listenFor = (function() {
         const addButton = document.querySelector('#todos .add');
         addButton.addEventListener('click', functionToExecute);
     };
+    
+    function closeListButton(functionToExecute) {
+        const closeArea = document.querySelector('#modal-add-list');
+        closeArea.addEventListener('click', (e) => {
+            if (e.target.id != 'modal-add-list') return;
+            functionToExecute()
+        });
+    };
+    
+    function closeTodoButton(functionToExecute) {
+        const closeArea = document.querySelector('#modal-add-todo');
+        closeArea.addEventListener('click', (e) => {
+            if (e.target.id != 'modal-add-todo') return;
+            functionToExecute();
+        })
+    };
 
-    return {undoButton, addListButton, addTodoButton};
+
+    return {undoButton, addListButton, addTodoButton, closeListButton, closeTodoButton};
 })();
 
 export default listenFor;
