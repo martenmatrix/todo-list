@@ -51,10 +51,6 @@ const listenFor = (function() {
         this.reset();
     };
 
-    function log() {
-        console.log(this);
-    };
-
     function submitListButton() {
         const listForm = document.querySelector('#modal-add-list .modal');
         listForm.addEventListener('submit', _submitForm);
@@ -64,7 +60,6 @@ const listenFor = (function() {
         const todoForm = document.querySelector('#modal-add-todo .modal');
         todoForm.addEventListener('submit', _submitForm);
     };
-
 
     return {undoButton, addListButton, addTodoButton, closeListButton, closeTodoButton, submitListButton, submitTodoButton};
 })();
