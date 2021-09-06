@@ -43,11 +43,30 @@ const listenFor = (function() {
         closeArea.addEventListener('click', (e) => {
             if (e.target.id != 'modal-add-todo') return;
             functionToExecute();
-        })
+        });
+    };
+
+    function _submitForm(e) {
+        e.preventDefault();
+        this.reset();
+    };
+
+    function log() {
+        console.log(this);
+    };
+
+    function submitListButton() {
+        const listForm = document.querySelector('#modal-add-list .modal');
+        listForm.addEventListener('submit', _submitForm);
+    };
+
+    function submitTodoButton() {
+        const todoForm = document.querySelector('#modal-add-todo .modal');
+        todoForm.addEventListener('submit', _submitForm);
     };
 
 
-    return {undoButton, addListButton, addTodoButton, closeListButton, closeTodoButton};
+    return {undoButton, addListButton, addTodoButton, closeListButton, closeTodoButton, submitListButton, submitTodoButton};
 })();
 
 export default listenFor;
