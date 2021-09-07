@@ -7,11 +7,12 @@ const main = (function () {
     //define event listeners
 
     function _getCookies() {
-        const objectJSON = localStorage.getItem('listObject');
+        const objectJSON = localStorage.getItem('listsObject');
         return JSON.parse(objectJSON); //convert json to object and return it
     };
     
-    function _setCookies(listsObject) {
+    function _setCookies() {
+        const listsObject = lists.getListsArray();
         const objectJSON = JSON.stringify(listsObject);
         localStorage.setItem('listsObject', objectJSON);
     };
@@ -21,8 +22,11 @@ const main = (function () {
         
     };
     
-    function _removeList(title) {
-        
+    function _removeList(e) {
+        const listTitle = (e.target.parentNode).getAttribute('data-title');
+        lists.deleteList(listTitle);
+        _displayItems();
+        _setCookies();
     };
 
     function _addTodoFromModal() {
@@ -42,11 +46,16 @@ const main = (function () {
         lists.setDescription(listTitle, listDescription);
         listInput.resetForm();
 
-        const newListArray = lists.getListsArray();
-        domManipulation.displayLists(newListArray);
-        _setCookies(listsObject);
+        _displayItems();
+        _setCookies();
     };
 
+    function _addEventListeners() {
+        //If multiple identical EventListeners are registered on the same EventTarget with the same parameters, the duplicate instances are discarded.
+        listenFor.deleteListButton(_removeList);
+    };
+
+    _addEventListeners();
     //addButtons
     listenFor.addListButton(listInput.toggle);
     listenFor.addTodoButton(todoInput.toggle);
@@ -57,11 +66,30 @@ const main = (function () {
     //sumbit forms buttons
     listenFor.submitListButton(_addListFromModal);
     listenFor.submitTodoButton(_addTodoFromModal);
+
     //try out what a created dom returns if its a object, try to add a event listener with it
 
-    function run() {
 
+    function _displayItems() {
+        const currentLists = lists.getListsArray();
+        domManipulation.displayLists(currentLists);
+        _addEventListeners();
+    };
+
+    function run() {
+        const listsCookie = _getCookies()
+        console.log(listsCookie);
+        if (listsCookie != null)  {
+            let cookie = _getCookies();
+            lists.setListsArray(cookie);
+            _displayItems();
+        };
+
+        //else create default list object
+        //display everything and display first list todo object
     };
 
     return {run};
 })();
+
+main.run();

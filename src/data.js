@@ -52,7 +52,11 @@ const lists = (function() {
         return lists;
     };
 
-    return {createList, deleteList, getListObject, setDescription, getTodoArray, setTodoArray, getListsArray}
+    function setListsArray(newListsArray) {
+        lists = newListsArray;
+    };
+
+    return {createList, deleteList, getListObject, setDescription, getTodoArray, setTodoArray, getListsArray, setListsArray}
 })();
 
 const todos = (function() {

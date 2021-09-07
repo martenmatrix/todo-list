@@ -62,7 +62,12 @@ const listenFor = (function() {
         });
     };
 
-    return {undoButton, addListButton, addTodoButton, closeListButton, closeTodoButton, submitListButton, submitTodoButton};
+    function deleteListButton(functionToExecute) {
+        const allListsDeleteButtons = document.querySelectorAll('.list-entry button');
+        allListsDeleteButtons.forEach(button => button.addEventListener('click', functionToExecute));
+    };
+
+    return {undoButton, addListButton, addTodoButton, closeListButton, closeTodoButton, submitListButton, submitTodoButton, deleteListButton};
 })();
 
 export default listenFor;
