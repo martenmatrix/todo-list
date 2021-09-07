@@ -46,19 +46,20 @@ const listenFor = (function() {
         });
     };
 
-    function _submitForm(e) {
-        e.preventDefault();
-        this.reset();
-    };
-
-    function submitListButton() {
+    function submitListButton(functionToExecute) {
         const listForm = document.querySelector('#modal-add-list .modal');
-        listForm.addEventListener('submit', _submitForm);
+        listForm.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            functionToExecute();
+        });
     };
 
     function submitTodoButton() {
         const todoForm = document.querySelector('#modal-add-todo .modal');
-        todoForm.addEventListener('submit', _submitForm);
+        todoForm.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            functionToExecute();        
+        });
     };
 
     return {undoButton, addListButton, addTodoButton, closeListButton, closeTodoButton, submitListButton, submitTodoButton};

@@ -48,7 +48,11 @@ const lists = (function() {
         lists[index].items = newArray;
     };
 
-    return {createList, deleteList, getListObject, setDescription, getTodoArray, setTodoArray}
+    function getListsArray() {
+        return lists;
+    };
+
+    return {createList, deleteList, getListObject, setDescription, getTodoArray, setTodoArray, getListsArray}
 })();
 
 const todos = (function() {

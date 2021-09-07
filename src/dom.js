@@ -1,8 +1,8 @@
 import { format } from 'date-fns';
 
 const domManipulation = (function() {
-    const listentries = document.querySelector('#list-entries');
-    const todosEntries = document.querySelector('#todo-entries');
+    const listentries = document.querySelector('#lists-entries');
+    const todosEntries = document.querySelector('#todos-entries');
 
     //misc
     function _removeAllDivs(divs) {
@@ -132,6 +132,7 @@ const undoModal = (function() {
 
 const todoInput = (function() {
     const todoInput = document.getElementById('modal-add-todo');
+    const todoForm = document.querySelector('#modal-add-todo form')
 
     function toggle() {
         todoInput.classList.toggle('show');
@@ -146,11 +147,16 @@ const todoInput = (function() {
         return {type: 'todo', title, description, date, priority}
     };
 
-    return {toggle, getData};
+    function resetForm() {
+        todoForm.reset();
+    };
+
+    return {toggle, getData, resetForm};
 })();
 
 const listInput = (function() {
     const todoInput = document.getElementById('modal-add-list');
+    const listForm = document.querySelector('#modal-add-list form')
 
     function toggle() {
         todoInput.classList.toggle('show');
@@ -163,7 +169,11 @@ const listInput = (function() {
         return {type: 'list', title, description};
     };
 
-    return {toggle, getData};
+    function resetForm() {
+        listForm.reset();
+    };
+
+    return {toggle, getData, resetForm};
 })();
 
 export { domManipulation, undoModal, todoInput, listInput };
