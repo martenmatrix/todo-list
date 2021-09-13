@@ -99,13 +99,7 @@ const todos = (function() {
         lists.setTodoArray(list, array);
     };
 
-    function getTodoObject() {
-        const array = lists.getTodoArray(list);
-        const index = _findIndex(array, title);
-        return array[index];
-    };
-
-    return {addTodo, removeTodo, setParameters, getTodoObject};
+    return {addTodo, removeTodo, setParameters};
 
 })();
 

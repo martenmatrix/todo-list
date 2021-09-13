@@ -89,8 +89,10 @@ const main = (function () {
 
     function _displayItems() {
         const currentLists = lists.getListsArray();
-        console.log(currentLists);
         domManipulation.displayLists(currentLists);
+
+        const currentTodoArray = lists.getTodoArray()
+
         _addEventListeners();
     };
 
