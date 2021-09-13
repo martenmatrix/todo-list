@@ -26,12 +26,23 @@ const main = (function () {
     function _removeList(e) {
         const listTitle = (e.target.parentNode).getAttribute('data-title');
         lists.deleteList(listTitle);
+
+        console.log(lists.getListsArray());
+
+        const currentList = lists.getListsArray();
+        if (!(currentList.length === 0)) selectedList = currentList[0].title;
+
         _displayItems();
         _setCookies();
         window.location.reload();
     };
 
     function _addTodoFromModal() {
+        if (selectedList === undefined) {
+            alert('Please create a list before adding a todo!');
+            return;
+        }
+
         todoInput.toggle();
 
         const data = todoInput.getData();
@@ -44,10 +55,15 @@ const main = (function () {
 
         todos.addTodo(selectedList, title);
         todos.setParameters(selectedList, title, description, date, priority);
+        
         _displayItems();
+        _setCookies();
     };
 
     function _addListFromModal() {
+        let firstListEntry = false;
+        if (lists.getListsArray().length === 0) firstListEntry = true;
+
         listInput.toggle();
 
         const data = listInput.getData();
@@ -58,12 +74,15 @@ const main = (function () {
         lists.setDescription(listTitle, listDescription);
         listInput.resetForm();
 
+        if (firstListEntry === true) selectedList = listTitle;
+
         _displayItems();
         _setCookies();
     };
 
     function _selectList(listTitle) {
         selectedList = listTitle;
+        _displayItems();
     }
 
     function _addEventListeners() {
@@ -88,25 +107,36 @@ const main = (function () {
 
     function _displayItems() {
         const currentLists = lists.getListsArray();
+        if (currentLists.length === 0) {
+            selectedList = undefined;
+            return;
+        };
+
         domManipulation.displayLists(currentLists);
 
         const currentTodoArray = lists.getTodoArray(selectedList);
+        console.log(currentTodoArray);
         domManipulation.removeAllTodos();
         domManipulation.displayAllTodos(currentTodoArray);
 
         _addEventListeners();
     };
 
+    //deletes wrong list
+
     function run() {
         const listsCookie = _getCookies()
         console.log(listsCookie);
+        console.log(listsCookie == null);
 
         //checks for cookies and sets them if there are some,
         //if there are none creates a default list and selects it
         if (listsCookie != null)  {
             let cookie = _getCookies();
             lists.setListsArray(cookie);
-            selectedList = lists.getListsArray()[0].title;
+            const currentLists = lists.getListsArray();
+            if (currentLists.length === 0) return;
+            selectedList = currentLists[0].title;
             _displayItems();
         } else {
             const defaultListTitle = 'Default List';
@@ -117,6 +147,7 @@ const main = (function () {
 
             _displayItems();
         };
+        console.log(lists.getListsArray());
     };
 
     return {run};

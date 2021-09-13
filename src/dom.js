@@ -13,7 +13,7 @@ const domManipulation = (function() {
     function displayTodoObject(object) {
         const title = object.title;
         const description = object.description;
-        const date = object.date;
+        const date = new Date(object.date);
         const displayDate = format(date, "d'.' MMM'.' y");
         const priority = object.priority;
 
