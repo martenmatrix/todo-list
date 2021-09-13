@@ -44,8 +44,7 @@ const main = (function () {
 
         todos.addTodo(selectedList, title);
         todos.setParameters(selectedList, title, description, date, priority);
-        console.log(lists.getListsArray());
-        console.log(data);
+        _displayItems();
     };
 
     function _addListFromModal() {
@@ -91,7 +90,9 @@ const main = (function () {
         const currentLists = lists.getListsArray();
         domManipulation.displayLists(currentLists);
 
-        const currentTodoArray = lists.getTodoArray()
+        const currentTodoArray = lists.getTodoArray(selectedList);
+        domManipulation.removeAllTodos();
+        domManipulation.displayAllTodos(currentTodoArray);
 
         _addEventListeners();
     };

@@ -141,7 +141,7 @@ const todoInput = (function() {
     function getData() {
         const title = document.getElementById('ftitletodo').value;
         const description = document.getElementById('fdescriptiontodo').value;
-        const date = document.getElementById('fdatetodo').value;
+        const date = document.getElementById('fdatetodo').valueAsDate;
         const priority = document.getElementById('fprioritytodo').value;
 
         return {type: 'todo', title, description, date, priority}
