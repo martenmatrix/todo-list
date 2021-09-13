@@ -85,12 +85,12 @@ const main = (function () {
         _displayItems();
     }
 
-    function _addEventListeners() {
+    function _addListEventListeners() {
         //If multiple identical EventListeners are registered on the same EventTarget with the same parameters, the duplicate instances are discarded.
         listenFor.deleteListButton(_removeList);
         listenFor.clickOnList((e) =>_selectList(e.currentTarget.dataset.title));
     };
-    _addEventListeners();
+    _addListEventListeners();
 
 
     //addButtons
@@ -115,11 +115,12 @@ const main = (function () {
         domManipulation.displayLists(currentLists);
 
         const currentTodoArray = lists.getTodoArray(selectedList);
-        console.log(currentTodoArray);
         domManipulation.removeAllTodos();
-        domManipulation.displayAllTodos(currentTodoArray);
+        if (!(currentTodoArray.length === 0)) {
+            domManipulation.displayAllTodos(currentTodoArray);
+        }
 
-        _addEventListeners();
+        _addListEventListeners();
     };
 
     //deletes wrong list
