@@ -40,6 +40,11 @@ const main = (function () {
         const date = data.date;
         const priority = data.priority;
 
+        todoInput.resetForm();
+
+        todos.addTodo(selectedList, title);
+        todos.setParameters(selectedList, title, description, date, priority);
+        console.log(lists.getListsArray());
         console.log(data);
     };
 
@@ -58,9 +63,14 @@ const main = (function () {
         _setCookies();
     };
 
+    function _selectList(listTitle) {
+        selectedList = listTitle;
+    }
+
     function _addEventListeners() {
         //If multiple identical EventListeners are registered on the same EventTarget with the same parameters, the duplicate instances are discarded.
         listenFor.deleteListButton(_removeList);
+        listenFor.clickOnList((e) =>_selectList(e.currentTarget.dataset.title));
     };
     _addEventListeners();
 
@@ -87,10 +97,21 @@ const main = (function () {
     function run() {
         const listsCookie = _getCookies()
         console.log(listsCookie);
+
+        //checks for cookies and sets them if there are some,
+        //if there are none creates a default list and selects it
         if (listsCookie != null)  {
             let cookie = _getCookies();
             lists.setListsArray(cookie);
             selectedList = lists.getListsArray()[0].title;
+            _displayItems();
+        } else {
+            const defaultListTitle = 'Default List';
+
+            lists.createList(defaultListTitle);
+            lists.setDescription(defaultListTitle, 'This is the default list. You can delete me, if you want to. :(');
+            _selectList(defaultListTitle);
+
             _displayItems();
         };
     };
