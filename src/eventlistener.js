@@ -54,7 +54,7 @@ const listenFor = (function() {
         });
     };
 
-    function submitTodoButton() {
+    function submitTodoButton(functionToExecute) {
         const todoForm = document.querySelector('#modal-add-todo .modal');
         todoForm.addEventListener('submit', (e) => {
             e.preventDefault(); 

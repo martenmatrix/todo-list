@@ -5,6 +5,7 @@ import { domManipulation, undoModal, todoInput, listInput } from './dom';
 
 const main = (function () {
     //define event listeners
+    let selectedList = undefined;
 
     function _getCookies() {
         const objectJSON = localStorage.getItem('listsObject');
@@ -27,12 +28,19 @@ const main = (function () {
         lists.deleteList(listTitle);
         _displayItems();
         _setCookies();
+        window.location.reload();
     };
 
     function _addTodoFromModal() {
-        todoInput.getData()
-        todoInput.resetForm();
         todoInput.toggle();
+
+        const data = todoInput.getData();
+        const title = data.title;
+        const description = data.description;
+        const date = data.date;
+        const priority = data.priority;
+
+        console.log(data);
     };
 
     function _addListFromModal() {
@@ -54,8 +62,9 @@ const main = (function () {
         //If multiple identical EventListeners are registered on the same EventTarget with the same parameters, the duplicate instances are discarded.
         listenFor.deleteListButton(_removeList);
     };
-
     _addEventListeners();
+
+
     //addButtons
     listenFor.addListButton(listInput.toggle);
     listenFor.addTodoButton(todoInput.toggle);
@@ -63,15 +72,14 @@ const main = (function () {
     //close addButtons
     listenFor.closeListButton(listInput.toggle);
     listenFor.closeTodoButton(todoInput.toggle);
+
     //sumbit forms buttons
     listenFor.submitListButton(_addListFromModal);
     listenFor.submitTodoButton(_addTodoFromModal);
 
-    //try out what a created dom returns if its a object, try to add a event listener with it
-
-
     function _displayItems() {
         const currentLists = lists.getListsArray();
+        console.log(currentLists);
         domManipulation.displayLists(currentLists);
         _addEventListeners();
     };
@@ -82,11 +90,9 @@ const main = (function () {
         if (listsCookie != null)  {
             let cookie = _getCookies();
             lists.setListsArray(cookie);
+            selectedList = lists.getListsArray()[0].title;
             _displayItems();
         };
-
-        //else create default list object
-        //display everything and display first list todo object
     };
 
     return {run};
