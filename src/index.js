@@ -20,7 +20,10 @@ const main = (function () {
 
     
     function _removeTodo(title) {
-        
+        todos.removeTodo(selectedList, title);
+
+        _displayItems();
+        _setCookies();
     };
 
     function _selectList(listTitle) {
@@ -84,6 +87,11 @@ const main = (function () {
         _setCookies();
     };
 
+    function _addTodoEventListeners() {
+        listenFor.deleteTodoButton((e) => _removeTodo(e.currentTarget.dataset.title));
+    };
+    _addTodoEventListeners();
+
     function _addListEventListeners() {
         //If multiple identical EventListeners are registered on the same EventTarget with the same parameters, the duplicate instances are discarded.
         listenFor.deleteListButton(_removeList);
@@ -120,6 +128,7 @@ const main = (function () {
         domManipulation.removeAllTodos();
         if (!(currentTodoArray.length === 0)) {
             domManipulation.displayAllTodos(currentTodoArray);
+            _addTodoEventListeners();
         }
 
         _addListEventListeners();
