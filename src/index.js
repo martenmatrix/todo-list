@@ -22,6 +22,10 @@ const main = (function () {
     function _removeTodo(title) {
         
     };
+
+    function _selectList(listTitle) {
+        selectedList = listTitle;
+    }
     
     function _removeList(e) {
         const listTitle = (e.target.parentNode).getAttribute('data-title');
@@ -30,7 +34,7 @@ const main = (function () {
         console.log(lists.getListsArray());
 
         const currentList = lists.getListsArray();
-        if (!(currentList.length === 0)) selectedList = currentList[0].title;
+        if (!(currentList.length === 0)) _selectList(currentList[0].title);
 
         _displayItems();
         _setCookies();
@@ -74,21 +78,19 @@ const main = (function () {
         lists.setDescription(listTitle, listDescription);
         listInput.resetForm();
 
-        if (firstListEntry === true) selectedList = listTitle;
+        if (firstListEntry === true) _selectList(listTitle);
 
         _displayItems();
         _setCookies();
     };
 
-    function _selectList(listTitle) {
-        selectedList = listTitle;
-        _displayItems();
-    }
-
     function _addListEventListeners() {
         //If multiple identical EventListeners are registered on the same EventTarget with the same parameters, the duplicate instances are discarded.
         listenFor.deleteListButton(_removeList);
-        listenFor.clickOnList((e) =>_selectList(e.currentTarget.dataset.title));
+        listenFor.clickOnList((e) => {
+            _selectList(e.currentTarget.dataset.title)
+            _displayItems();
+        });
     };
     _addListEventListeners();
 
@@ -121,6 +123,7 @@ const main = (function () {
         }
 
         _addListEventListeners();
+        domManipulation.selectList(selectedList);
     };
 
     //deletes wrong list
@@ -137,7 +140,7 @@ const main = (function () {
             lists.setListsArray(cookie);
             const currentLists = lists.getListsArray();
             if (currentLists.length === 0) return;
-            selectedList = currentLists[0].title;
+            _selectList(currentLists[0].title);
             _displayItems();
         } else {
             const defaultListTitle = 'Default List';
@@ -145,8 +148,6 @@ const main = (function () {
             lists.createList(defaultListTitle);
             lists.setDescription(defaultListTitle, 'This is the default list. You can delete me, if you want to. :(');
             _selectList(defaultListTitle);
-
-            _displayItems();
         };
         console.log(lists.getListsArray());
     };

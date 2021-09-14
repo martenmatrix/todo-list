@@ -113,7 +113,18 @@ const domManipulation = (function() {
         });
     };
 
-    return {displayLists, removeAllTodos, displayAllTodos};
+    function selectList(listTitle) {
+        const allListsDivs = document.querySelectorAll('.list-entry');
+        allListsDivs.forEach(list => {
+            list.classList.remove('selected')
+
+            const currenListTitle = list.getAttribute('data-title');
+            if (currenListTitle === listTitle) list.classList.add('selected');    
+        });
+
+    }
+
+    return {displayLists, removeAllTodos, displayAllTodos, selectList};
 })();
 
 const undoModal = (function() {
