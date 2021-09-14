@@ -2,6 +2,7 @@ import './style.css';
 import { lists, todos } from './data';
 import listenFor from './eventlistener'
 import { domManipulation, undoModal, todoInput, listInput } from './dom';
+import statistics from './statistics';
 
 const main = (function () {
     //define event listeners
@@ -22,6 +23,8 @@ const main = (function () {
     function _removeTodo(title) {
         todos.removeTodo(selectedList, title);
 
+        statistics.removeOpen();
+        statistics.addCompleted();
         _displayItems();
         _setCookies();
     };
@@ -33,8 +36,6 @@ const main = (function () {
     function _removeList(e) {
         const listTitle = (e.target.parentNode).getAttribute('data-title');
         lists.deleteList(listTitle);
-
-        console.log(lists.getListsArray());
 
         const currentList = lists.getListsArray();
         if (!(currentList.length === 0)) _selectList(currentList[0].title);
@@ -60,6 +61,7 @@ const main = (function () {
 
         todoInput.resetForm();
 
+        statistics.addOpen();
         todos.addTodo(selectedList, title);
         todos.setParameters(selectedList, title, description, date, priority);
         
@@ -139,8 +141,6 @@ const main = (function () {
 
     function run() {
         const listsCookie = _getCookies()
-        console.log(listsCookie);
-        console.log(listsCookie == null);
 
         //checks for cookies and sets them if there are some,
         //if there are none creates a default list and selects it
@@ -158,7 +158,6 @@ const main = (function () {
             lists.setDescription(defaultListTitle, 'This is the default list. You can delete me, if you want to. :(');
             _selectList(defaultListTitle);
         };
-        console.log(lists.getListsArray());
     };
 
     return {run};

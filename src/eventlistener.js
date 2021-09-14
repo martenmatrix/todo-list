@@ -73,7 +73,7 @@ const listenFor = (function() {
     };
 
     function deleteTodoButton(functionToExecute) {
-        const allTodosDeleteButtons = document.querySelectorAll('.todo-entry');
+        const allTodosDeleteButtons = document.querySelectorAll('.todo-entry button');
         allTodosDeleteButtons.forEach(button => button.addEventListener('click', functionToExecute))
     }
 

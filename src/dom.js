@@ -187,4 +187,18 @@ const listInput = (function() {
     return {toggle, getData, resetForm};
 })();
 
-export { domManipulation, undoModal, todoInput, listInput };
+const statisticsDOM = (function() {
+    function displayCompleted(amount) {
+        const counter = document.getElementById('completed-tasks');
+        counter.textContent = String(amount);
+    };
+
+    function displayPending(amount) {
+        const counter = document.getElementById('pending-tasks');
+        counter.textContent = String(amount);
+    };
+
+    return {displayCompleted, displayPending}
+})();
+
+export { domManipulation, undoModal, todoInput, listInput, statisticsDOM};
