@@ -138,7 +138,12 @@ const undoModal = (function() {
         modal.style.display = 'none';
     };
 
-    return { show, hide }
+    function setTitle(title) {
+        const deletedTodoTextField = document.getElementById('deleted-todo');
+        deletedTodoTextField.textContent = title;
+    };
+
+    return { show, hide, setTitle }
 })();
 
 const todoInput = (function() {

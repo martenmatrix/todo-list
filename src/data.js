@@ -12,7 +12,7 @@ const lists = (function() {
         const index = lists.findIndex(isList);
 
         return index;
-    }
+    };
 
     function createList(title) {
         const newList =  new List();
