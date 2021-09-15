@@ -167,6 +167,7 @@ const main = (function () {
             lists.createList(defaultListTitle);
             lists.setDescription(defaultListTitle, 'This is the default list. You can delete me, if you want to. :(');
             _selectList(defaultListTitle);
+            _displayItems();
         };
     };
 

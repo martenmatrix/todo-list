@@ -73,7 +73,7 @@ const domManipulation = (function() {
     //List sections
     function displayListObject(listObject) {
         const title = listObject.title;
-        const description = listObject.title;
+        const description = listObject.description;
 
         const divWrapper = document.createElement('div');
         divWrapper.classList.add('list-entry');
