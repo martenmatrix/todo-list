@@ -27,7 +27,17 @@ const main = (function () {
         statistics.addCompleted();
         _displayItems();
         _setCookies();
+
+        undoModal.setTitle(title); 
+        undoModal.show();
     };
+
+    listenFor.undoButton(() => {
+        undoModal.hide();
+        todos.backToBackupList();
+        _setCookies();
+        _displayItems();
+    });
 
     function _selectList(listTitle) {
         selectedList = listTitle;
@@ -90,7 +100,7 @@ const main = (function () {
     };
 
     function _addTodoEventListeners() {
-        listenFor.deleteTodoButton((e) => _removeTodo(e.currentTarget.dataset.title));
+        listenFor.deleteTodoButton((e) => _removeTodo(e.currentTarget.parentNode.parentNode.dataset.title));
     };
     _addTodoEventListeners();
 

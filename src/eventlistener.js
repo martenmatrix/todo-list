@@ -75,7 +75,7 @@ const listenFor = (function() {
     function deleteTodoButton(functionToExecute) {
         const allTodosDeleteButtons = document.querySelectorAll('.todo-entry button');
         allTodosDeleteButtons.forEach(button => button.addEventListener('click', functionToExecute))
-    }
+    };
 
     return {undoButton, addListButton, addTodoButton, closeListButton, closeTodoButton, submitListButton, submitTodoButton, deleteListButton, clickOnList, deleteTodoButton};
 })();

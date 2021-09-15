@@ -68,6 +68,16 @@ const todos = (function() {
         this.priority = undefined;
     };
 
+    let backupLists = [];
+
+    function _createBackupList() {
+        backupLists = JSON.parse(JSON.stringify(lists.getListsArray()));
+    };
+
+    function backToBackupList() {
+        lists.setListsArray(backupLists);
+    }
+
     function _findIndex(itemArray, titleOfTodo) {
         const isTitle = (entry) => (entry.title) === titleOfTodo;
         const index = itemArray.findIndex(isTitle);
@@ -84,10 +94,13 @@ const todos = (function() {
     };
 
     function removeTodo(list, title) {
+        _createBackupList();
+
         const array = lists.getTodoArray(list);
         const index = _findIndex(array, title);
         array.splice(index, 1);
-        lists.setTodoArray(list, array);
+        //lists.setTodoArray(list, array);
+        //doesnt need in other things also, because it is referenced
     };
 
     function setParameters(list, title, description, date, priority) {
@@ -99,7 +112,7 @@ const todos = (function() {
         lists.setTodoArray(list, array);
     };
 
-    return {addTodo, removeTodo, setParameters};
+    return {addTodo, removeTodo, setParameters, backToBackupList};
 
 })();
 

@@ -249,6 +249,10 @@ body {
     z-index: 2;
 }
 
+#modal-undo {
+    display: none;
+}
+
 #undo-todo-modal {
     position: relative;
     background-color: white;
