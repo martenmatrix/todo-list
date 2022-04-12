@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo-List</title>
+    <script src="3a10a80adc39b2eeb6c5.js" defer></script>
+<script defer src="main.js"></script></head>
+<body>
+
+<div class="modal-wrapper" id="modal-undo">
+    <div id="undo-todo-modal">
+        <p><strong>You</strong> deleted "<span id="deleted-todo">task/list</span>".<img class="return-button" alt="return-button" src="aa41db8d1911549c92c5.svg"></p>
+    </div>
+</div>
+
+<div class="modal-wrapper-input" id="modal-add-todo">
+    <div class="modal-input">
+    <p class="modal-title"></p>
+        <form class="modal">
+            <label for="ftitletodo">Title:</label>
+            <input type="text" class="ftitle" id="ftitletodo" required>
+            <label for="fdescriptiontodo">Description:</label>
+            <input type="text" class="fdescription" id="fdescriptiontodo" required>
+            <label for="fdatetodo">Date:</label>
+            <input type="date" class="fdate" id="fdatetodo" required>
+            <label for="fprioritytodo">Priority:</label>
+            <select class="fpriority" id="fprioritytodo" required>
+                <option value="vhigh">Very High</option>
+                <option value="high">High</option>
+                <option value="low">Low</option>
+            </select>
+            <input type="submit" value="Add Todo">
+        </form>
+    </div>
+</div>
+
+
+
+<div class="modal-wrapper-input" id="modal-add-list">
+    <div class="modal-input">
+        <p class="modal-title"></p>
+        <form class="modal">
+            <label for="ftitlelist">Title:</label>
+            <input type="text" class="ftitle" id="ftitlelist" required>
+            <label for="fdescriptionlist">Description:</label>
+            <input type="text" class="fdescription" id="fdescriptionlist" required>
+            <input type="submit" value="Add List" required>
+        </form>
+    </div>
+</div>
+
+<div id="main">
+    <section id="lists">
+        <p class="header">Lists<button class="add">+</button></p>
+
+        <div id="lists-entries">
+        </div>
+    </section>
+
+    <div class="break-line"></div>
+
+    <section id="todos">
+        <p class="header">Todo's <button class="add">+</button><p>
+
+        <div id="todos-entries">
+        </div>
+    </section>
+
+    <div class="break-line"></div>
+
+    <section id="statistics">
+        <p class="header">Statistics</p>
+
+        <div class="center-horizontal">
+        <div id="statistics-box">
+        <ul id="statistics-list">
+            <li><span class="circle red"></span>    <p id="pending-tasks">0</p>  </li>
+            <li><span class="circle green"></span>    <p id="completed-tasks">0</p>  </li>
+        </ul>
+        </div>
+        </p>
+    </section>
+</div>
+</body>
+</html>
