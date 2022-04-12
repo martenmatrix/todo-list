@@ -12,7 +12,10 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v2
-
+  
+      - name: Install dependecies
+        run: npm ci
+  
       - name: Generate your content
         run: npx webpack
 
